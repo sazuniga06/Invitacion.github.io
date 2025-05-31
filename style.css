@@ -1,0 +1,264 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
+
+/* Fondo dinámico con gradiente animado */
+body {
+  margin: 0;
+  height: 100vh;
+  overflow: hidden;
+  background: linear-gradient(-45deg, #0a1f1f, #1b3f3f, #133333, #1a4a4a);
+  background-size: 400% 400%;
+  animation: gradientBG 28s ease infinite;
+  font-family: 'Georgia', serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #2c4f4f;
+  position: relative;
+  text-shadow: 1px 1px 3px rgba(0, 230, 230, 0.63);
+}
+
+/* Animación suave del fondo */
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Canvas con integración visual elegante */
+#matrix-canvas {
+  position: fixed;
+  top: 0; 
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.35; /* + Intensidad */
+  mix-blend-mode: screen;
+  filter:
+    brightness(1.6) /* + Luz */
+    contrast(1.5)   /* + Definición */
+    drop-shadow(0 0 6px #00ffea); /* Brillo cian */
+}
+
+.letter-container {
+  position: relative;
+  z-index: 10;
+  max-width: 1080px;
+  width: 90vw;
+  max-height: 90vh;      /* Limita altura máxima */
+  overflow-y: auto;      /* Scroll si contenido es muy grande */
+  background: rgba(15, 40, 45, 0.9);  /* Fondo oscuro con transparencia */
+  border: 2px solid #339999;           /* Borde sutil en tono frío */
+  border-radius: 20px;
+  box-shadow:
+    0 4px 15px rgba(51, 153, 153, 0.3),  /* Sombra suave y elegante */
+    inset 0 0 10px rgba(51, 153, 153, 0.2);
+  padding: 40px 50px;
+  color: #66c7c7;                      /* Color texto más tenue, elegante */
+  backdrop-filter: blur(10px);         /* Menos blur, más sutil */
+  opacity: 0;
+  transform: translateY(40px);
+  animation: fadeInUp 1.5s forwards 0.5s;
+  text-align: justify;
+
+  overflow-wrap: break-word;
+  word-break: break-word;
+  white-space: normal;
+}
+
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+h1 {
+  font-size: 3.4rem;
+  margin-bottom: 28px;
+  color: #336666;
+  text-shadow:
+    1px 1px 3px rgba(51, 102, 102, 0.5);
+  word-wrap: break-word;
+}
+
+p {
+  font-size: 1.4rem;
+  line-height: 1.75;
+  margin: 12px 0;
+  color: #4a7a7a;
+  text-shadow: 1px 1px 2px rgba(74, 122, 122, 0.3);
+  transition: color 0.6s ease-in-out;
+  white-space: normal;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+p:nth-child(2) {
+  animation: pulseText 3.5s ease-in-out infinite;
+}
+
+@keyframes pulseText {
+  0%, 100% { color: #4a7a7a; }
+  50% { color: #2c4f4f; }
+}
+
+.signature {
+  text-align: right;
+  font-family: 'Cursive', cursive;
+  font-size: 1.9rem;
+  margin-top: 42px;
+  color: #3a6666;
+  text-shadow:
+    1px 1px 4px rgba(58, 102, 102, 0.5);
+  animation: glowPulse 4s ease-in-out infinite alternate;
+}
+
+@keyframes glowPulse {
+  from {
+    text-shadow:
+      1px 1px 5px rgba(58, 102, 102, 0.4);
+  }
+  to {
+    text-shadow:
+      1px 1px 8px rgba(34, 85, 85, 0.5);
+  }
+}
+
+
+.invite-btn {
+  display: block;
+  margin: 50px auto 0;
+  font-size: 1.8rem;
+  padding: 18px 55px;
+  border: none;
+  border-radius: 40px;
+  background: linear-gradient(135deg, #4a7a7a, #2c4f4f);
+  background-size: 200% 200%;
+  color: #f0f7f7;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow:
+    2px 2px 8px rgba(51, 102, 102, 0.3),
+    inset 1px 1px 4px rgba(255, 255, 255, 0.05);
+  transition: all 0.4s ease;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  user-select: none;
+  animation: buttonFadeIn 1.8s ease forwards;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.invite-btn:hover {
+  background-position: right center;
+  transform: scale(1.05);
+  box-shadow:
+    2px 4px 12px rgba(34, 85, 85, 0.4);
+  color: #ffffff;
+}
+
+/* Fade in suave similar al texto */
+@keyframes buttonFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+
+.floating-math {
+  position: fixed;
+  font-size: 2.6rem;
+  font-family: 'Georgia', serif;
+  font-weight: 500;
+  color: #0cd1d1;
+  text-shadow:
+    1px 1px 3px rgba(20, 175, 175, 0.747),
+    0 0 6px rgba(10, 206, 206, 0.233);
+  user-select: none;
+  pointer-events: none;
+  animation-name: floatRotateElegant;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  mix-blend-mode: normal;
+  will-change: transform, opacity;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-rendering: optimizeLegibility;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+  opacity: 0.85;
+}
+
+.floating-math:hover {
+  color: #11fcfc;
+  text-shadow:
+    1px 1px 4px rgba(0, 177, 177, 0.5),
+    0 0 6px rgba(0, 185, 185, 0.25);
+}
+
+@keyframes floatRotateElegant {
+  0% {
+    transform: translateY(100vh) rotate(0deg);
+    opacity: 0;
+  }
+  30% {
+    opacity: 0.9;
+  }
+  60% {
+    transform: translateY(40vh) rotate(180deg);
+  }
+  100% {
+    transform: translateY(-250px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+
+/* Partículas tipo "brillo neón" */
+.particle {
+  position: fixed;
+  background: radial-gradient(circle, #00ffe1, #0077ff);
+  border-radius: 50%;
+  opacity: 0.8;
+  pointer-events: none;
+  animation: particleMove 3.5s linear infinite;
+  will-change: transform, opacity;
+}
+
+@keyframes particleMove {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0.8;
+    filter: drop-shadow(0 0 8px #00ffe1);
+  }
+  100% {
+    transform: translateY(-160px) translateX(60px);
+    opacity: 0;
+  }
+}
+
+/* Responsive */
+@media (max-width: 700px) {
+  .letter-container {
+    padding: 30px 25px;
+    max-width: 90vw;
+  }
+
+  h1 {
+    font-size: 2.6rem;
+  }
+
+  .floating-math {
+    font-size: 1.9rem;
+  }
+
+  .invite-btn {
+    font-size: 1.6rem;
+    padding: 18px 40px;
+  }
+}
